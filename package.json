@@ -1,7 +1,7 @@
 {
-  "name": "babel5-plugin-strip-heimdall",
+  "name": "babel5-plugin-strip-class-callcheck",
   "version": "5.0.0",
-  "description": "Strips heimdall instrumentation from babel output",
+  "description": "Strips classCallCheck from babel5 output",
   "main": "index.js",
   "keywords": [
     "babel",
