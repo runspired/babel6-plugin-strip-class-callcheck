@@ -1,22 +1,26 @@
 function stripClassCallCheck(babel) {
-  return new babel.Plugin('strip-class-call-check', {
+  return {
+    name: 'strip-class-callcheck',
     visitor: {
-      ExpressionStatement: function(node, path) {
-        if (node.expression.type === 'CallExpression' &&
-          node.expression.callee &&
-          node.expression.callee.type === 'MemberExpression' &&
-          node.expression.callee.object.name === 'babelHelpers' &&
-          node.expression.callee.property.name === 'classCallCheck') {
+      CallExpression: function(path) {
+        const node = path.node;
+        const callee = node.callee;
 
-          if (path.body && path.body.length) {
-            path.body = path.body.filter(function(item) {
-              return item !== node;
-            });
-          }
+        if (!callee) {
+          return;
+        }
+
+        if (callee.object &&
+          callee.object.name === 'babelHelpers' &&
+          callee.property.name === 'classCallCheck') {
+
+          path.remove();
+        } else if (callee.name === '_classCallCheck') {
+          path.remove();
         }
       }
     }
-  });
+  };
 }
 
 stripClassCallCheck.baseDir = function() {
