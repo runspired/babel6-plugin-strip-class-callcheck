@@ -6,6 +6,7 @@
 /benchmarks
 /bin
 /docs
+/.idea
 
 **/.gitkeep
 .appveyor.yml
