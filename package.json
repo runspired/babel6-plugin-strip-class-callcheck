@@ -7,6 +7,10 @@
     "babel",
     "babel-plugin"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/runspired/babel6-plugin-strip-class-callcheck.git"
+  },
   "author": "Chris Thoburn",
   "license": "MIT"
 }
